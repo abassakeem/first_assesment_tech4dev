@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+      body {
+        overflow-x: hidden;
+      }
+
+      nav {
+        background-color: rgba(255, 255, 255, 0.3);
+        padding: 1rem 2rem;
+        margin: 1rem 2rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .navs a {
+        padding: 1em 5em;
+        font-weight: bold;
+        cursor: pointer;
+        text-transform: capitalize;
+      }
+      .hero-section {
+        height: 600px;
+        background-image: url("https://www.exordo.com/blog/wp-content/uploads/2023/12/Resized-image.jpeg");
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        padding: 2rem;
+      }
+
+      .hero-content {
+        position: absolute;
+        bottom: 5rem;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 2rem;
+      }
+
+      .hero-text {
+        color: white;
+        max-width: 500px;
+      }
+
+      .search-group {
+        display: flex;
+        gap: 0.5rem;
+        background: white;
+        padding: 0.5rem;
+        border-radius: 8px;
+        margin-right: 75px;
+      }
+
+      select,
+      input,
+      button {
+        padding: 0.5rem 1rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+
+      button {
+        background: #000;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background: #08121d;
+      }
+
+      .cards-section {
+        display: flex;
+        gap: 2rem;
+        padding: 2rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .card {
+        width: 300px;
+        border-radius: 8px;
+
+        overflow: hidden;
+      }
+
+      .card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .card-content {
+        padding: 1rem;
+      }
+
+      .card-date {
+        color: #666;
+        font-size: 0.9rem;
+        margin: 0.5rem 0;
+      }
+
+      .card-text {
+        margin: 1rem 0;
+        color: #333;
+      }
+
+      .view-details {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        border: 1px solid #000;
+        color: #000;
+        text-decoration: none;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hero-section">
+      <nav>
+        <div class="">
+          <h1>ISWIS</h1>
+        </div>
+
+        <div class="navs">
+          <a>about</a>
+          <a>Contact</a>
+          <a>Services</a>
+        </div>
+      </nav>
+      <div class="hero-content">
+        <div class="hero-text">
+          <h2>
+            Ready to Rock? Discover the <br/>Hottest Events here - Your<br/>Calender's
+            New Best Friend
+          </h2>
+        
+        </div>
+        <div class="search-group">
+          <select>
+            <option value="">All Categories</option>
+            <option value="1">Category 1</option>
+            <option value="2">Category 2</option>
+            <option value="3">Category 3</option>
+          </select>
+          <input type="text" placeholder="Search..." />
+          <button>Search</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="cards-section">
+      <div class="card">
+        <img
+          src="https://media.istockphoto.com/id/974238866/photo/audience-listens-to-the-lecturer-at-the-conference.jpg?s=612x612&w=0&k=20&c=p_BQCJWRQQtZYnQlOtZMzTjeB_csic8OofTCAKLwT0M="
+          alt="Card 1"
+        />
+        <div class="card-content">
+          <h3>Card Title 1</h3>
+          <div class="card-date">November 20, 2024</div>
+          <p class="card-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+          <a href="#" class="view-details">View Details</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img
+          src="https://media.istockphoto.com/id/974238866/photo/audience-listens-to-the-lecturer-at-the-conference.jpg?s=612x612&w=0&k=20&c=p_BQCJWRQQtZYnQlOtZMzTjeB_csic8OofTCAKLwT0M="
+          alt="Card 2"
+        />
+        <div class="card-content">
+          <h3>Card Title 2</h3>
+          <div class="card-date">November 20, 2024</div>
+          <p class="card-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+          <a href="#" class="view-details">View Details</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img
+          src="https://media.istockphoto.com/id/974238866/photo/audience-listens-to-the-lecturer-at-the-conference.jpg?s=612x612&w=0&k=20&c=p_BQCJWRQQtZYnQlOtZMzTjeB_csic8OofTCAKLwT0M="
+          alt="Card 3"
+        />
+        <div class="card-content">
+          <h3>Card Title 3</h3>
+          <div class="card-date">November 20, 2024</div>
+          <p class="card-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+          <a href="#" class="view-details">View Details</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
