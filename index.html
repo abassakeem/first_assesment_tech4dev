@@ -126,6 +126,10 @@
         text-decoration: none;
         border-radius: 4px;
       }
+      img {
+        width: 50%;
+        height: 50%;
+      }
     </style>
   </head>
   <body>
@@ -144,10 +148,9 @@
       <div class="hero-content">
         <div class="hero-text">
           <h2>
-            Ready to Rock? Discover the <br/>Hottest Events here - Your<br/>Calender's
+            Ready to Rock? Discover the <br />Hottest Events here - Your<br />Calender's
             New Best Friend
           </h2>
-        
         </div>
         <div class="search-group">
           <select>
@@ -163,7 +166,7 @@
     </div>
 
     <div class="cards-section">
-      <div class="card">
+      <!-- <div class="card">
         <img
           src="https://media.istockphoto.com/id/974238866/photo/audience-listens-to-the-lecturer-at-the-conference.jpg?s=612x612&w=0&k=20&c=p_BQCJWRQQtZYnQlOtZMzTjeB_csic8OofTCAKLwT0M="
           alt="Card 1"
@@ -209,7 +212,32 @@
           </p>
           <a href="#" class="view-details">View Details</a>
         </div>
-      </div>
+      </div> -->
     </div>
+
+    <script type="module">
+      import { renderCards } from "./js/cards.js";
+      import { ProductService } from "./js/product.js";
+
+      async function initializeProductCards() {
+        try {
+          const productService = new ProductService();
+          const products = await productService.getProducts();
+          renderCards(products);
+        } catch (error) {
+          const cardSection = document.querySelector(".cards-section");
+          cardSection.innerHTML = `
+            <div class="error-message">
+              Failed to load products. Please try again later.
+              <br>
+              Error: ${error.message}
+            </div>
+          `;
+        }
+      }
+      initializeProductCards();
+    </script>
+    <script src="./js/index.js" type="module"></script>
+    <script src="./js/product.js" type="module"></script>
   </body>
 </html>
