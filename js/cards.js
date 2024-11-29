@@ -17,7 +17,7 @@ export function renderCards(products) {
         <div class="card-rating">
           Rating: ${product.rating.rate}/5 (${product.rating.count} reviews)
         </div>
-        <a href="#" class="view-details">View Details</a>
+        <a href="productDetails.html?id=${product.id}" class="view-details">View Details</a>
       </div>
     `;
 
