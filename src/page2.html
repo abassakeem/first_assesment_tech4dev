@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./output.css" rel="stylesheet" />
+    <link href="./css/page2.css" rel="stylesheet" />
+  </head>
+  <body class="m-0 p-0">
+    <div class="product-details" id="product-details"></div>
+
+    <script type="module">
+      import { ProductService } from "./js/product.js";
+
+      function getProductIdFromURL() {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get("id");
+      }
+
+      async function renderProductDetails() {
+        const productId = getProductIdFromURL();
+        if (!productId) {
+          document.getElementById("product-details").innerHTML =
+            "<p>No product selected</p>";
+          return;
+        }
+
+        try {
+          const productService = new ProductService();
+          const product = await productService.getProductByID(productId);
+
+          // Generate star rating
+          const starRating =
+            "★".repeat(Math.round(product.rating.rate)) +
+            "☆".repeat(5 - Math.round(product.rating.rate));
+
+          document.getElementById("product-details").innerHTML = `
+                  <div class="hero-section h-screen">
+      <div class="">
+        <div class="">
+          <nav
+            class="bg-white p-6 mx-10 rounded-2xl flex gap-6 items-center justify-between"
+          >
+            <div class="text-[#432361]">
+              <a href="index.html" class="font-bold text-4xl">rendezvous</a>
+            </div>
+
+            <div class="navs font-bold text-[#432361] flex gap-8">
+              <a href="#" class="hover:border-b-2 hover:border-[#432361]"
+                >Discover</a
+              >
+              <a href="#" class="hover:border-b-2 hover:border-[#432361]"
+                >About Us</a
+              >
+              <a href="#" class="hover:border-b-2 hover:border-[#432361]"
+                >FAQ</a
+              >
+              <a href="#" class="hover:border-b-2 hover:border-[#432361]"
+                >Contacts
+              </a>
+            </div>
+
+            <div class="right-btns">
+              <a class="font-bold text-[#432361] mr-4">Log in </a>
+              <a class="text-white py-2 px-6 rounded-lg bg-[#783EAD] font-bold"
+                >Sign up
+              </a>
+            </div>
+          </nav>
+        </div>
+        <div class="live-event-content flex justify-center items-center px-8">
+          <div class="hero-text text-white">
+            <img src="${product.image}" alt="${product.title}" class="rounded-xl w-screen" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="live-event-content px-8">
+      <div>
+        <h4 class="font-bold text-3xl capitalize mb-8">
+          ${product.title}
+        </h4>
+        <div class="desc leading-10 font-thin">
+          <div class="calender flex items-center">
+            <img src="./img/Calendar.svg " class="inline mr-1" /> ${new Date().toLocaleDateString()}
+            <img src="./img/Time.svg" class="ml-4 inline mr-1" /> 6pm
+          </div>
+
+          <img src="./img/Location.svg " class="inline mr-1" /> Race Course, 8/9
+          Marina, Onikan, Lagos Lagos, 4aa Force Rd, Lagos Island 102273, Lagos
+          <div class="">
+            <img src="./img/User.svg" class="inline mr-1" /> ${product.category}
+          </div>
+        </div>
+      </div>
+
+      <div class="ed-ctn flex gap-8 mt-6">
+        <div class="event-description w-2/3">
+          <h4 class="font-bold mb-4">Event Description</h4>
+          <p class="font-thin">
+            ${product.description}
+          </p>
+          <div class="tp-ctn ">
+            <div class="tickets-pricing">
+              <h4 class="font-semibold text-sm mt-5 mb-2">Ticket Pricing</h4>
+              <div class="flex gap-16">
+                <div class="single">
+                  <h6 class="font-normal text-lg">Single</h6>
+                  <p class="text-[#9B51E0] font-bold mt-1">$${product.price.toFixed(2)}</p>
+                </div>
+                <div class="pair">
+                  <h6 class="font-normal text-lg">Pair</h6>
+                  <p class="text-[#9B51E0] font-bold mt-1">NGN 9,000</p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="buy-now-btn mt-8 w-fit text-white py-3 px-10 rounded-lg bg-[#783EAD] font-bold"
+            >
+              Buy now
+            </div>
+          </div>
+        </div>
+        <div class="map w-1/3">
+          <h4 class="font-bold mb-4">Directions</h4>
+          <div class="hero-text text-white">
+            <img src="./img/map.svg" class=" " />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="">
+      <div class="flex justify-between mt-6 bg-[#432361] p-8 pb-32">
+        <div class="left">
+          <h3 class="font-bold text-3xl text-white">rendezvous</h3>
+          <p class="font-thin mt-2 text-white">
+            Your Personal Event Sherpa: Curating<br> Awesome, One Click at a Time.
+          </p>
+        </div>
+        <div class="right leading-8 flex gap-32 text-white">
+          <div class="text-white">
+            <div class="font-bold font-lg">Feature</div>
+
+            <div class="">Event directory</div>
+            <div class="">Ticketing</div>
+          </div>
+          <div class="">
+            <div class="font-bold font-lg">Comapny</div>
+            <div class="">About Us</div>
+            <div class="">FAQs</div>
+            <div class="">Careers</div>
+            <div class="">Support</div>
+          </div>
+          <div class="">
+            <div class="font-bold font-lg">Contact us</div>
+            <div class="">info@events.com</div>
+            <div class="">+234 814 799 2483</div>
+            <div class="-leading-8 adddress">
+              Race Course, 8/9 Marina,<br />
+              Onikan, Lagos Lagos, 4aa Force <br />Rd, Lagos Island 102273,
+              Lagos
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+              `;
+        } catch (error) {
+          document.getElementById("product-details").innerHTML = `
+                  <p>Error loading product details: ${error.message}</p>
+              `;
+        }
+      }
+
+      renderProductDetails();
+    </script>
+    <div class="hero-section h-screen">
+      <div class="">
+        <div class="">
+          <nav
+            class="bg-white p-6 mx-10 rounded-2xl flex gap-6 items-center justify-between"
+          >
+            <div class="text-[#432361]">
+              <a href="index.html" class="font-bold text-4xl">rendezvous</a>
+            </div>
+
+            <div class="navs font-bold text-[#432361] flex gap-8">
+              <a href="#" class="hover:border-b-2 hover:border-[#432361]"
+                >Discover</a
+              >
+              <a href="#" class="hover:border-b-2 hover:border-[#432361]"
+                >About Us</a
+              >
+              <a href="#" class="hover:border-b-2 hover:border-[#432361]"
+                >FAQ</a
+              >
+              <a href="#" class="hover:border-b-2 hover:border-[#432361]"
+                >Contacts
+              </a>
+            </div>
+
+            <div class="right-btns">
+              <a class="font-bold text-[#432361] mr-4">Log in </a>
+              <a class="text-white py-2 px-6 rounded-lg bg-[#783EAD] font-bold"
+                >Sign up
+              </a>
+            </div>
+          </nav>
+        </div>
+        <div class="live-event-content flex justify-center items-center px-8">
+          <div class="hero-text text-white">
+            <img src="./img/babes.svg" class="rounded-xl w-screen" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="live-event-content px-8">
+      <div>
+        <h4 class="font-bold text-3xl capitalize mb-8">
+          I said what i said live show
+        </h4>
+        <div class="desc leading-10 font-thin">
+          <div class="calender flex items-center">
+            <img src="./img/Calendar.svg " class="inline mr-1" /> Sunday,
+            october 3rd, 2023
+            <img src="./img/Time.svg" class="ml-4 inline mr-1" /> 6pm
+          </div>
+
+          <img src="./img/Location.svg " class="inline mr-1" /> Race Course, 8/9
+          Marina, Onikan, Lagos Lagos, 4aa Force Rd, Lagos Island 102273, Lagos
+          <div class="">
+            <img src="./img/User.svg" class="inline mr-1" /> Fk, Jollz
+          </div>
+        </div>
+      </div>
+
+      <div class="ed-ctn flex gap-8 mt-6">
+        <div class="event-description w-2/3">
+          <h4 class="font-bold mb-4">Event Description</h4>
+          <p class="font-thin">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit
+            aliquam omnis dolorem, debitis quaerat sint ducimus quod deserunt
+            optio ipsa minima nulla libero fugiat fuga dolores commodi incidunt
+            aut accusantium impedit reiciendis voluptates. Nobis ipsa non
+            deleniti eum. Vel cupiditate enim corrupti illo cum voluptate facere
+            libero a sit! Placeat possimus ut deleniti error saepe, id aliquam.
+            Inventore quis fugit incidunt perspiciatis necessitatibus sunt
+            excepturi sint saepe perferendis nostrum, vero, facilis aliquam qui
+            reiciendis quidem voluptatibus ipsum rerum soluta, assumenda omnis
+            illum ipsam velit. Sed eaque officiis cumque laudantium fugit quas
+            dolorum, quaerat vero et quasi perferendis facere molestiae eius.
+          </p>
+          <div class="tp-ctn">
+            <div class="tickets-pricing">
+              <h4 class="font-semibold text-sm mt-5 mb-2">Ticket Pricing</h4>
+              <div class="flex gap-16">
+                <div class="single">
+                  <h6 class="font-normal text-lg">Single</h6>
+                  <p class="text-[#9B51E0] font-bold mt-1">NGN 5,000</p>
+                </div>
+                <div class="pair">
+                  <h6 class="font-normal text-lg">Pair</h6>
+                  <p class="text-[#9B51E0] font-bold mt-1">NGN 9,000</p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="buy-now-btn mt-8 w-fit text-white py-3 px-10 rounded-lg bg-[#783EAD] font-bold"
+            >
+              Buy now
+            </div>
+          </div>
+        </div>
+        <div class="map w-1/3">
+          <h4 class="font-bold mb-4">Directions</h4>
+          <div class="hero-text text-white">
+            <img src="./img/map.svg" class=" " />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="">
+      <div class="flex justify-between mt-6 bg-[#432361] p-8 pb-32">
+        <div class="left">
+          <h3 class="font-bold text-3xl text-white">rendezvous</h3>
+          <p class="font-thin mt-2 text-white">
+            Your Personal Event Sherpa: Curating<br />
+            Awesome, One Click at a Time.
+          </p>
+        </div>
+        <div class="right leading-8 flex gap-32 text-white">
+          <div class="text-white">
+            <div class="font-bold font-lg">Feature</div>
+
+            <div class="">Event directory</div>
+            <div class="">Ticketing</div>
+          </div>
+          <div class="">
+            <div class="font-bold font-lg">Comapny</div>
+            <div class="">About Us</div>
+            <div class="">FAQs</div>
+            <div class="">Careers</div>
+            <div class="">Support</div>
+          </div>
+          <div class="">
+            <div class="font-bold font-lg">Contact us</div>
+            <div class="">info@events.com</div>
+            <div class="">+234 814 799 2483</div>
+            <div class="-leading-8 adddress">
+              Race Course, 8/9 Marina,<br />
+              Onikan, Lagos Lagos, 4aa Force <br />Rd, Lagos Island 102273,
+              Lagos
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

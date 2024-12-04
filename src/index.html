@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.cdnfonts.com/css/gilroy-bold" rel="stylesheet" />
+    <link href="./output.css" rel="stylesheet" />
+    <link href="./css/index.css" rel="stylesheet" />
+  </head>
+  <body class="m-0 p-0 overflow-x-hidden">
+    <div class="hero-section relative h-screen">
+      <div class="">
+        <div class="p-8">
+          <nav
+            class="bg-white bg-opacity-60 p-6 rounded-3xl flex gap-6 items-center justify-between"
+          >
+            <div class="text-[#432361]">
+              <h1 class="font-bold text-4xl">rendezvous</h1>
+            </div>
+
+            <div class="navs font-bold text-[#432361] flex gap-8">
+              <a href="page2.html">Discover</a>
+              <a class="hover:border-b-2 hover:border-[#432361]">About Us</a>
+              <a class="hover:border-b-2 hover:border-[#432361]">FAQ</a>
+              <a class="hover:border-b-2 hover:border-[#432361]">Contacts </a>
+            </div>
+
+            <div class="right-btns">
+              <a class="font-bold text-[#432361] mr-4">Log in </a>
+              <a class="text-white py-2 px-6 rounded-lg bg-[#783EAD] font-bold"
+                >Sign up
+              </a>
+            </div>
+          </nav>
+        </div>
+        <div
+          class="hero-content absolute bottom-1/4 w-screen flex justify-between items-center px-8"
+        >
+          <div class="hero-text text-white text-4xl">
+            <h2 class="font-bold">
+              Ready to Rock? Discover the <br />Hottest Events here - Your<br />Calender's
+              New Best Friend
+            </h2>
+          </div>
+          <div class="search-group bg-white flex gap-2 rounded-3xl p-4 mr-4">
+            <input
+              type="text"
+              class="w-52 border-r mr-10 px-2 py-2 rounded"
+              placeholder="Search for a category"
+            />
+            <select class="w-52 px-2 py-2 rounded">
+              <option value="">All Categories</option>
+              <option value="1">Category 1</option>
+              <option value="2">Category 2</option>
+              <option value="3">Category 3</option>
+            </select>
+
+            <button class="py-2 px-6 rounded-lg bg-[#783EAD] text-white">
+              Search
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="trending-posts px-36 py-10">
+      <div class="flex justify-between items-center">
+        <div class="header text-3xl"><h4>Trending Events</h4></div>
+        <div class="font-bold">View all trending events</div>
+      </div>
+      <div
+        class="cards-section flex gap-8 p-8 justify-center flex-wrap items-center"
+      ></div>
+    </div>
+    <div class="discover">
+      <div class="justify-center w-full flex gap-10">
+        <div class="discover-text-section w-1/4">
+          <h3 class="font-bold text-3xl p-8 px-0">
+            Discover a World of events<br />
+            Tailored just for You.
+          </h3>
+          <div class="px-8">
+            <a class="py-2 px-6 rounded-lg bg-[#783EAD] text-white"
+              >View all events</a
+            >
+          </div>
+        </div>
+
+        <div class="events-section w-2/3 mb-6">
+          <div class="top flex gap-6 mb-6">
+            <div class="relative group">
+              <img src="./img/Rectangle 3.svg" class="" />
+              <div
+                class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300 text-white"
+              >
+                yepa
+              </div>
+            </div>
+            <div class="relative group gap-6">
+              <img src="./img/Rectangle 4.svg" class="" />
+              <div
+                class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300 text-white"
+              >
+                yepa
+              </div>
+            </div>
+          </div>
+          <div class="bottom mt-6 relative group w-fit">
+            <img src="./img/Rectangle 5.svg" class="" />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300 text-white rounded-lg"
+            >
+              yepa
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="">
+      <div class="flex justify-between mt-6 bg-[#432361] p-8 pb-32">
+        <div class="left">
+          <h3 class="font-bold text-3xl text-white">rendezvous</h3>
+          <p class="font-thin mt-2 text-white">
+            Your Personal Event Sherpa: Curating<br />
+            Awesome, One Click at a Time.
+          </p>
+        </div>
+        <div class="right leading-8 flex gap-32 text-white">
+          <div class="text-white">
+            <div class="font-bold font-lg">Feature</div>
+
+            <div class="">Event directory</div>
+            <div class="">Ticketing</div>
+          </div>
+          <div class="">
+            <div class="font-bold font-lg">Comapny</div>
+            <div class="">About Us</div>
+            <div class="">FAQs</div>
+            <div class="">Careers</div>
+            <div class="">Support</div>
+          </div>
+          <div class="">
+            <div class="font-bold font-lg">Contact us</div>
+            <div class="">info@events.com</div>
+            <div class="">+234 814 799 2483</div>
+            <div class="-leading-8 adddress">
+              Race Course, 8/9 Marina,<br />
+              Onikan, Lagos Lagos, 4aa Force <br />Rd, Lagos Island 102273,
+              Lagos
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module">
+      import { renderCards } from "./js/cards.js";
+      import { ProductService } from "./js/product.js";
+
+      async function initializeProductCards() {
+        try {
+          const productService = new ProductService();
+          const products = await productService.getProducts();
+          renderCards(products);
+        } catch (error) {
+          const cardSection = document.querySelector(".cards-section");
+          cardSection.innerHTML = `
+              <div class="error-message">
+                Failed to load products. Please try again later.
+                <br>
+                Error: ${error.message}
+              </div>
+            `;
+        }
+      }
+      initializeProductCards();
+    </script>
+    <script src="./js/index.js" type="module"></script>
+    <script src="./js/product.js" type="module"></script>
+  </body>
+</html>
